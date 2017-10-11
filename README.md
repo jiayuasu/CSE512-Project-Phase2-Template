@@ -9,20 +9,19 @@ In Project Phase 2, you need to write two User Defined Functions (ST\_Contains, 
 * Distance query: Use ST_Within
 * Distance join query: Use ST_Within
 
-The main template code of this project is here: [Main file](https://github.com/jiayuasu/CSE512-Project-Phase2-Template/blob/master/src/main/scala/cse512/SparkSQLExample.scala)
 
+A Scala SparkSQL code template is given. You must start from the template. The main code is in "SparkSQLExample.scala"
 
 
 The detailed requirements are as follows:
 
 ### 1. ST_Contains
 
-
 Input: pointString:String, queryRectangle:String
 
 Output: Boolean (true or false)
 
-Definition: Check whether queryRectangle fully contains point. Consider on-boundary point.
+Definition: You first need to parse pointString (e.g., "-88.331492,32.324142") and queryRectangle (e.g., "-155.940114,19.081331,-155.618917,19.5307") to a format that you are comfortable with. Then check whether queryRectangle fully contains point. Consider on-boundary point.
 
 ### 2. ST_Within
 
@@ -30,10 +29,12 @@ Input: pointString1:String, pointString2:String, distance:Double
 
 Output: Boolean (true or false)
 
-Definition: Check whether two points are within the given distance. Consider on-boundary point.
+Definition: You first need to parse pointString1 (e.g., "-88.331492,32.324142") and pointString2 (e.g., "-88.331492,32.324142") to a format that you are comfortable with. Then check whether two points are within the given distance. Consider on-boundary point.
 
 
 ### 3. Use Your UDF in SparkSQL
+
+The code template has loaded the original data (point data, arealm.csv, and rectangle data, zcta510.csv) into DataFrame using tsv format. You don't need to worry about the loading phase.
 
 Range query:
 ```
@@ -64,25 +65,26 @@ print(resultDf.count())
 ```
 ### 5. Run your code on Apache Spark using "spark-submit"
 
-If you are using this Scala template, note that:
+If you are using the Scala template, note that:
 
 1. You **only have to replace the logic** (currently is "true") in all User Defined Function and then submit it using "spark-submit".
 2. Y may need to change the master IP address (currently is "local[*]" which means run in local mode and use all local cores)
 3. You may need to change input file path/format and DataFrame API in order to load data from HDFS.
 
+## Deadline
+
+
 ## How to debug your code in IDE
 
-If you are using this Scala template
+If you are using the Scala template
 
 1. Use IntelliJ Idea with Scala plug-in or any other Scala IDE.
 2. Replace the logic of User Defined Functions (ST\_Contains, ST\_Within) in SparkSQLExample.scala.
 3. In some cases, you may need to go to "build.sbt" file and change ```% "provided"``` to ```% "compile"``` in order to debug your code in IDE
 4. Run your code in IDE
 
-You can also use Java. But you must complete all the required tasks.
-
 ## How to submit your code to Spark
-If you are using this Scala template
+If you are using the Scala template
 
 1. Go to project root folder
 2. Run ```sbt assembly```
