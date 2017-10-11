@@ -4,10 +4,10 @@
 
 In Project Phase 2, you need to write two User Defined Functions (ST\_Contains, ST\_Within) in SparkSQL and use them to do four spatial queries:
 
-* Range query: Use ST_Contains
-* Range join query: Use ST_Contains
-* Distance query: Use ST_Within
-* Distance join query: Use ST_Within
+* Range query: Use ST_Contains. Given a Rectangle Query, find all points within that Rectangle.
+* Range join query: Use ST_Contains. Given a set of Rectangles R and a set of Points S, find all (Point, Rectangle) pairs such that the point is within the rectangle (ST\_Contains).
+* Distance query: Use ST_Within. Given a point location P and distance D in miles or km, find all points that lie within a distance D from P
+* Distance join query: Use ST_Within. Given a set of Points S1 and a set of Points S2 and a distance D in miles or km, find all (Points, Point) pairs such that s1 is within a distance D from s2 (i.e., s1 belongs to S1 and s2 belongs to S2).
 
 
 A Scala SparkSQL code template is given. You must start from the template. The main code is in "SparkSQLExample.scala"
@@ -39,22 +39,29 @@ The code template has loaded the original data (point data, arealm.csv, and rect
 Range query:
 ```
 select * 
-from point where ST_Contains(point._c0,'-155.940114,19.081331,-155.618917,19.5307')
+from point 
+where ST_Contains(point._c0,'-155.940114,19.081331,-155.618917,19.5307')
 ```
 
 Range join query:
 ```
-select * from rectangle,point where ST_Contains(rectangle._c0,point._c0)
+select * 
+from rectangle,point 
+where ST_Contains(rectangle._c0,point._c0)
 ```
 
 Distance query:
 ```
-select * from point where ST_Within(point._c0,'-88.331492,32.324142',10)
+select * 
+from point 
+where ST_Within(point._c0,'-88.331492,32.324142',10)
 ```
 
 Distance join query:
 ```
-select * from point p1, point p2 where ST_Within(p1._c0, p2._c0, 10)
+select * 
+from point p1, point p2 
+where ST_Within(p1._c0, p2._c0, 10)
 ```
 
 ### 4. Print the count of your result DataFrame
