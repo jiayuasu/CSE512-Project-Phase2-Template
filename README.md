@@ -9,9 +9,11 @@ In Project Phase 2, you need to write two User Defined Functions (ST\_Contains, 
 * Distance query: Use ST_Within
 * Distance join query: Use ST_Within
 
-You **only have to replace the logic** (currently is "true") in all User Defined Function and then submit it using "spark-submit".
+The main template code of this project is here: [Main file](https://github.com/jiayuasu/CSE512-Project-Phase2-Template/blob/master/src/main/scala/cse512/SparkSQLExample.scala)
 
-Their interfaces are as follows:
+
+
+The detailed requirements are as follows:
 
 ### 1. ST_Contains
 
@@ -61,6 +63,12 @@ You must print the count of your resultDataFrame. Code is commentted out in the 
 print(resultDf.count())
 ```
 ### 5. Run your code on Apache Spark using "spark-submit"
+
+If you are using this Scala template, note that:
+
+1. You **only have to replace the logic** (currently is "true") in all User Defined Function and then submit it using "spark-submit".
+2. Y may need to change the master IP address (currently is "local[*]" which means run in local mode and use all local cores)
+3. You may need to change input file path/format and DataFrame API in order to load data from HDFS.
 
 ## How to debug your code in IDE
 
