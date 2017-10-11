@@ -1,4 +1,4 @@
-# CSE512-Project-Phase2-Template
+# CSE512-Project-Phase2-Requirement
 
 ## Requirement
 
@@ -82,8 +82,9 @@ If you are using the Scala template, note that:
 October 30, 2017 11:59 pm
 
 ### Submission files
-1. Submit your project source code onto Blackboard in the format of "cse512-phase2-GROUPNAME". Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
-2. If your code cannot compile and package, you will not receive any points.
+1. arealm is a point dataset and zcta510 is a rectangle dataset.
+2. Submit your project source code onto Blackboard in a compress zip file of "cse512-phase2-GROUPNAME". Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
+3. If your code cannot compile and package, you will not receive any points.
 
 ## How to debug your code in IDE
 
