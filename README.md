@@ -5,7 +5,7 @@
 In Project Phase 2, you need to write two User Defined Functions ST\_Contains and ST\_Within in SparkSQL and use them to do four spatial queries:
 
 * Range query: Use ST_Contains. Given a query rectangle R and a set of points P, find all the points within R.
-* Range join query: Use ST_Contains. Given a set of Rectangles R and a set of Points S, find all (Point, Rectangle) pairs such that the point is within the rectangle (ST\_Contains).
+* Range join query: Use ST_Contains. Given a set of Rectangles R and a set of Points S, find all (Point, Rectangle) pairs such that the point is within the rectangle.
 * Distance query: Use ST_Within. Given a point location P and distance D in km, find all points that lie within a distance D from P
 * Distance join query: Use ST_Within. Given a set of Points S1 and a set of Points S2 and a distance D in km, find all (s1, s2) pairs such that s1 is within a distance D from s2 (i.e., s1 belongs to S1 and s2 belongs to S2).
 
@@ -29,7 +29,7 @@ Input: pointString1:String, pointString2:String, distance:Double
 
 Output: Boolean (true or false)
 
-Definition: You first need to parse the pointString1 (e.g., "-88.331492,32.324142") and pointString2 (e.g., "-88.331492,32.324142") to a format that you are comfortable with. Then check whether the two points are within the given distance. Consider on-boundary point.
+Definition: You first need to parse the pointString1 (e.g., "-88.331492,32.324142") and pointString2 (e.g., "-88.331492,32.324142") to a format that you are comfortable with. Then check whether the two points are within the given distance. Consider on-boundary point. To calculate the distance (km) between two point coordinates, you need to use the distance formula in this page: [Distance formula](http://www.movable-type.co.uk/scripts/latlong.html)
 
 
 ### 3. Use Your UDF in SparkSQL
@@ -75,11 +75,15 @@ print(resultDf.count())
 If you are using the Scala template, note that:
 
 1. You **only have to replace the logic** (currently is "true") in all User Defined Function and then submit it using "spark-submit".
-2. Y may need to change the master IP address (currently is "local[*]" which means run in local mode and use all local cores)
-3. You may need to change input file path/format and DataFrame API in order to load data from HDFS.
+2. The main function in this template takes 3 parameters, master IP, point data file path, rectangle data file path.
 
-## Deadline
+## Submission
+### Deadline
+October 30, 2017 11:59 pm
 
+### Submission files
+1. Submit your project source code onto Blackboard in the format of "cse512-phase2-GROUPNAME". Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
+2. If your code cannot compile and package, you will not receive any points.
 
 ## How to debug your code in IDE
 

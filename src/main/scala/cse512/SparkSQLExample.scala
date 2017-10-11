@@ -15,21 +15,21 @@ object SparkSQLExample {
     val spark = SparkSession
       .builder()
       .appName("CSE512-Phase2")
-      .config("spark.some.config.option", "some-value").master("local[*]")
+      .config("spark.some.config.option", "some-value").master(args(0))
       .getOrCreate()
 
 
-    runRangeQuery(spark)
-    runRangeJoinQuery(spark)
-    runDistanceQuery(spark)
-    runDistanceJoinQuery(spark)
+    runRangeQuery(spark,args)
+    runRangeJoinQuery(spark,args)
+    runDistanceQuery(spark,args)
+    runDistanceJoinQuery(spark,args)
 
     spark.stop()
   }
 
-  private def runRangeQuery(spark: SparkSession): Unit = {
+  private def runRangeQuery(spark: SparkSession,args: Array[String]): Unit = {
 
-    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load("src/resources/arealm.csv");
+    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load(args(1));
     arealmDf.createOrReplaceTempView("point")
 
     // YOU NEED TO FILL IN THIS USER DEFINED FUNCTION
@@ -40,12 +40,12 @@ object SparkSQLExample {
     //print(resultDf.count())
   }
 
-  private def runRangeJoinQuery(spark: SparkSession): Unit = {
+  private def runRangeJoinQuery(spark: SparkSession,args: Array[String]): Unit = {
 
-    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load("src/resources/arealm.csv");
+    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load(args(1));
     arealmDf.createOrReplaceTempView("point")
 
-    val zcta510Df = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load("src/resources/zcta510.csv");
+    val zcta510Df = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load(args(2));
     zcta510Df.createOrReplaceTempView("rectangle")
 
     // YOU NEED TO FILL IN THIS USER DEFINED FUNCTION
@@ -56,9 +56,9 @@ object SparkSQLExample {
     //print(resultDf.count())
   }
 
-  private def runDistanceQuery(spark: SparkSession): Unit = {
+  private def runDistanceQuery(spark: SparkSession,args: Array[String]): Unit = {
 
-    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load("src/resources/arealm.csv");
+    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load(args(1));
     arealmDf.createOrReplaceTempView("point")
 
     // YOU NEED TO FILL IN THIS USER DEFINED FUNCTION
@@ -71,9 +71,9 @@ object SparkSQLExample {
 
 
 
-  private def runDistanceJoinQuery(spark: SparkSession): Unit = {
+  private def runDistanceJoinQuery(spark: SparkSession,args: Array[String]): Unit = {
 
-    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load("src/resources/arealm.csv");
+    val arealmDf = spark.read.format("com.databricks.spark.csv").option("delimiter","\t").option("header","false").load(args(1));
     arealmDf.createOrReplaceTempView("point")
 
     // YOU NEED TO FILL IN THIS USER DEFINED FUNCTION
