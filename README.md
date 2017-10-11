@@ -2,12 +2,12 @@
 
 ## Requirement
 
-In Project Phase 2, you need to write two User Defined Functions (ST\_Contains, ST\_Within) in SparkSQL and use them to do four spatial queries:
+In Project Phase 2, you need to write two User Defined Functions ST\_Contains and ST\_Within in SparkSQL and use them to do four spatial queries:
 
-* Range query: Use ST_Contains. Given a Rectangle Query, find all points within that Rectangle.
+* Range query: Use ST_Contains. Given a query rectangle R and a set of points P, find all the points within R.
 * Range join query: Use ST_Contains. Given a set of Rectangles R and a set of Points S, find all (Point, Rectangle) pairs such that the point is within the rectangle (ST\_Contains).
-* Distance query: Use ST_Within. Given a point location P and distance D in miles or km, find all points that lie within a distance D from P
-* Distance join query: Use ST_Within. Given a set of Points S1 and a set of Points S2 and a distance D in miles or km, find all (Points, Point) pairs such that s1 is within a distance D from s2 (i.e., s1 belongs to S1 and s2 belongs to S2).
+* Distance query: Use ST_Within. Given a point location P and distance D in km, find all points that lie within a distance D from P
+* Distance join query: Use ST_Within. Given a set of Points S1 and a set of Points S2 and a distance D in km, find all (s1, s2) pairs such that s1 is within a distance D from s2 (i.e., s1 belongs to S1 and s2 belongs to S2).
 
 
 A Scala SparkSQL code template is given. You must start from the template. The main code is in "SparkSQLExample.scala"
@@ -21,7 +21,7 @@ Input: pointString:String, queryRectangle:String
 
 Output: Boolean (true or false)
 
-Definition: You first need to parse pointString (e.g., "-88.331492,32.324142") and queryRectangle (e.g., "-155.940114,19.081331,-155.618917,19.5307") to a format that you are comfortable with. Then check whether queryRectangle fully contains point. Consider on-boundary point.
+Definition: You first need to parse the pointString (e.g., "-88.331492,32.324142") and queryRectangle (e.g., "-155.940114,19.081331,-155.618917,19.5307") to a format that you are comfortable with. Then check whether the queryRectangle fully contains the point. Consider on-boundary point.
 
 ### 2. ST_Within
 
@@ -29,7 +29,7 @@ Input: pointString1:String, pointString2:String, distance:Double
 
 Output: Boolean (true or false)
 
-Definition: You first need to parse pointString1 (e.g., "-88.331492,32.324142") and pointString2 (e.g., "-88.331492,32.324142") to a format that you are comfortable with. Then check whether two points are within the given distance. Consider on-boundary point.
+Definition: You first need to parse the pointString1 (e.g., "-88.331492,32.324142") and pointString2 (e.g., "-88.331492,32.324142") to a format that you are comfortable with. Then check whether the two points are within the given distance. Consider on-boundary point.
 
 
 ### 3. Use Your UDF in SparkSQL
@@ -86,7 +86,7 @@ If you are using the Scala template, note that:
 If you are using the Scala template
 
 1. Use IntelliJ Idea with Scala plug-in or any other Scala IDE.
-2. Replace the logic of User Defined Functions (ST\_Contains, ST\_Within) in SparkSQLExample.scala.
+2. Replace the logic of User Defined Functions ST\_Contains and ST\_Within in SparkSQLExample.scala.
 3. In some cases, you may need to go to "build.sbt" file and change ```% "provided"``` to ```% "compile"``` in order to debug your code in IDE
 4. Run your code in IDE
 
