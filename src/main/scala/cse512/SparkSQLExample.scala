@@ -36,7 +36,7 @@ object SparkSQLExample {
     pointDf.createOrReplaceTempView("point")
 
     // YOU NEED TO FILL IN THIS USER DEFINED FUNCTION
-    spark.udf.register("ST_Contains",(queryRectangle:String, pointString:String)=>((true)))
+    spark.udf.register("ST_Contains",(pointString:String, queryRectangle:String)=>((true)))
 
     val resultDf = spark.sql("select * from point where ST_Contains(point._c0,'"+args(2)+"')")
     resultDf.show()
@@ -53,7 +53,7 @@ object SparkSQLExample {
     rectangleDf.createOrReplaceTempView("rectangle")
 
     // YOU NEED TO FILL IN THIS USER DEFINED FUNCTION
-    spark.udf.register("ST_Contains",(rectanlgeString:String, pointString:String)=>((true)))
+    spark.udf.register("ST_Contains",(pointString:String, queryRectangle:String)=>((true)))
 
     val resultDf = spark.sql("select * from rectangle,point where ST_Contains(rectangle._c0,point._c0)")
     resultDf.show()
