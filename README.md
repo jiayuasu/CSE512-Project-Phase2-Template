@@ -64,25 +64,39 @@ from point p1, point p2
 where ST_Within(p1._c0, p2._c0, 10)
 ```
 
-### 4. Print the count of your result DataFrame
-You must print the count of your resultDataFrame. Code is commentted out in the template.
-
-```
-print(resultDf.count())
-```
-### 5. Run your code on Apache Spark using "spark-submit"
+### 4. Run your code on Apache Spark using "spark-submit"
 
 If you are using the Scala template, note that:
 
-1. You **only have to replace the logic** (currently is "true") in all User Defined Function and then submit it using "spark-submit".
-2. The main function in this template takes 3 parameters, master IP, point data file path, rectangle data file path.
+1. You **only have to replace the logic** (currently is "true") in all User Defined Function.
+2. The main function in this template takes 11 parameters as follows:
+	* Output file path: ```/Users/ubuntu/Downloads/output.csv```
+	* Range query data file path, query window: ```/Users/ubuntu/Downloads/arealm.csv -155.940114,19.081331,-155.618917,19.5307```
+	* Range join query data file path, range join query window data file path: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/zcta510.csv```
+	* Distance query data file path, query point, distance: ```/Users/ubuntu/Downloads/arealm.csv -88.331492,32.324142 10```
+	* Distance join query data A file path, distance join query data B file path, distance: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/arealm.csv 10```
+3. Two example datasets are put in "src/resources" folder. arealm is a point dataset and zcta510 is a rectangle dataset. You can can use them to test your code but eventually you must run your code on NYC taxi trip dataset. Our auto-grading system will also run your code on NYC taxi trip data.
+4. Here is an example that tells you how to submit your jar using "spark-submit"
+```
+./bin/spark-submit ~/GitHub/CSE512-Project-Phase3-Template/target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar ~/Downloads/ ~/Downloads/arealm_small.csv -155.940114,19.081331,-155.618917,19.5307 ~/Downloads/arealm_small.csv ~/Downloads/zcta510_small.csv ~/Downloads/arealm_small.csv -88.331492,32.324142 10 ~/Downloads/arealm_small.csv ~/Downloads/arealm_small.csv 10
+```
+
+### 5. Tholab cluster file structure
+On all machines in your cluster:
+
+```/CSE512/data/nyc-spark/pickup/``` has all point data stored in ```x,y``` CSV format.
+
+```/CSE512/code/hadoop-2.7.4``` has a fresh Hadoop 2.7.4
+```/CSE512/code/spark-2.2.0-bin-hadoop2.7``` has a fresh Spark 2.2.
+
+You need to set up password-less SSH and start HDFS/Spark by yourself. These machines have static IP.
+
 
 ## Submission
 ### Deadline
 October 30, 2017 11:59 pm
 
 ### Submission files
-1. arealm is a point dataset and zcta510 is a rectangle dataset.
 2. Submit your project source code onto Blackboard in a compress zip file of "cse512-phase2-GROUPNAME". Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
 3. If your code cannot compile and package, you will not receive any points.
 
@@ -92,6 +106,7 @@ If you are using the Scala template
 
 1. Use IntelliJ Idea with Scala plug-in or any other Scala IDE.
 2. Replace the logic of User Defined Functions ST\_Contains and ST\_Within in SparkSQLExample.scala.
+3. Append ```.master("local[*]")``` after ```.config("spark.some.config.option", "some-value")``` to tell IDE the master IP is localhost.
 3. In some cases, you may need to go to "build.sbt" file and change ```% "provided"``` to ```% "compile"``` in order to debug your code in IDE
 4. Run your code in IDE
 
@@ -99,6 +114,6 @@ If you are using the Scala template
 If you are using the Scala template
 
 1. Go to project root folder
-2. Run ```sbt assembly```
+2. Run ```sbt assembly```. You may need to install sbt in order to run this command.
 3. Find the packaged jar in "./target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar"
 4. Submit the jar to Spark using Spark command "./bin/spark-submit"
