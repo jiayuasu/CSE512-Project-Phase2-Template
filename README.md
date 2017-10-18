@@ -97,7 +97,8 @@ You need to set up password-less SSH and start HDFS/Spark by yourself. These mac
 October 30, 2017 11:59 pm
 
 ### Submission files
-2. Submit your project source code onto Blackboard in a compress zip file of "cse512-phase2-GROUPNAME". Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
+1. Submit your code on Vocareum website in order to get your grade.
+2. Submit your project source code onto Blackboard in a compress zip file of "cse512-phase2-GROUPNAME" for plagiarism detection. Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
 3. If your code cannot compile and package, you will not receive any points.
 
 ## How to debug your code in IDE
