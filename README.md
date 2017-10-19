@@ -29,8 +29,7 @@ Input: pointString1:String, pointString2:String, distance:Double
 
 Output: Boolean (true or false)
 
-Definition: You first need to parse the pointString1 (e.g., "-88.331492,32.324142") and pointString2 (e.g., "-88.331492,32.324142") to a format that you are comfortable with. Then check whether the two points are within the given distance. Consider on-boundary point. To calculate the distance (km) between two point coordinates, you need to use the distance formula in this page: [Distance formula](http://www.movable-type.co.uk/scripts/latlong.html)
-
+Definition: You first need to parse the pointString1 (e.g., "-88.331492,32.324142") and pointString2 (e.g., "-88.331492,32.324142") to a format that you are comfortable with. Then check whether the two points are within the given distance. Consider on-boundary point. To simplify the problem, please assume all coordinates are on a planar space and calculate their Euclidean distance.
 
 ### 3. Use Your UDF in SparkSQL
 
@@ -81,7 +80,8 @@ If you are using the Scala template, note that:
 ./bin/spark-submit ~/GitHub/CSE512-Project-Phase3-Template/target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar ~/Downloads/ ~/Downloads/arealm_small.csv -155.940114,19.081331,-155.618917,19.5307 ~/Downloads/arealm_small.csv ~/Downloads/zcta510_small.csv ~/Downloads/arealm_small.csv -88.331492,32.324142 10 ~/Downloads/arealm_small.csv ~/Downloads/arealm_small.csv 10
 ```
 
-### 5. Tholab cluster file structure
+### 5. Tholab setting
+#### File structure
 On all machines in your cluster:
 
 ```/CSE512/data/nyc-spark/pickup/``` has all point data stored in ```x,y``` CSV format.
@@ -91,10 +91,26 @@ On all machines in your cluster:
 
 You need to set up password-less SSH and start HDFS/Spark by yourself. These machines have static IP.
 
+#### Website
+**User credential activate website (for activation only!)**: https://www.thothlab.org/
+
+**Thothlab Cluster Interface**: https://openstack.thothlab.com
+
+**Domain**:users
+
+### 6. Vocareum setting
+
+### Website
+
+https://www.vocareum.com/
+
+For submission only!
+
+Do not test your code here. You have limited submission times. Every submission impacts your grade! 
 
 ## Submission
 ### Deadline
-October 30, 2017 11:59 pm
+November 2nd, 2017 11:59 pm
 
 ### Submission files
 1. Submit your code on Vocareum website in order to get your grade.
