@@ -68,8 +68,12 @@ where ST_Within(p1._c0, p2._c0, 10)
 If you are using the Scala template, note that:
 
 1. You **only have to replace the logic** (currently is "true") in all User Defined Function.
-2. The main function in this template takes 11 parameters as follows:
+2. The main function in this template takes 21 parameters as follows:
 	* Output file path: ```/Users/ubuntu/Downloads/output.csv```
+	* Range query data file path, query window: ```/Users/ubuntu/Downloads/arealm.csv -155.940114,19.081331,-155.618917,19.5307```
+	* Range join query data file path, range join query window data file path: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/zcta510.csv```
+	* Distance query data file path, query point, distance: ```/Users/ubuntu/Downloads/arealm.csv -88.331492,32.324142 10```
+	* Distance join query data A file path, distance join query data B file path, distance: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/arealm.csv 10```
 	* Range query data file path, query window: ```/Users/ubuntu/Downloads/arealm.csv -155.940114,19.081331,-155.618917,19.5307```
 	* Range join query data file path, range join query window data file path: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/zcta510.csv```
 	* Distance query data file path, query point, distance: ```/Users/ubuntu/Downloads/arealm.csv -88.331492,32.324142 10```
@@ -77,10 +81,28 @@ If you are using the Scala template, note that:
 3. Two example datasets are put in "src/resources" folder. arealm is a point dataset and zcta510 is a rectangle dataset. You can can use them to test your code but eventually you must run your code on NYC taxi trip dataset. Our auto-grading system will also run your code on NYC taxi trip data.
 4. Here is an example that tells you how to submit your jar using "spark-submit"
 ```
-./bin/spark-submit ~/GitHub/CSE512-Project-Phase3-Template/target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar ~/Downloads/ ~/Downloads/arealm_small.csv -155.940114,19.081331,-155.618917,19.5307 ~/Downloads/arealm_small.csv ~/Downloads/zcta510_small.csv ~/Downloads/arealm_small.csv -88.331492,32.324142 10 ~/Downloads/arealm_small.csv ~/Downloads/arealm_small.csv 10
+./bin/spark-submit ~/GitHub/CSE512-Project-Phase3-Template/target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar ~/Downloads/output.csv ~/Downloads/arealm_small.csv -155.940114,19.081331,-155.618917,19.5307 ~/Downloads/arealm_small.csv ~/Downloads/zcta510_small.csv ~/Downloads/arealm_small.csv -88.331492,32.324142 10 ~/Downloads/arealm_small.csv ~/Downloads/arealm_small.csv 10 ~/Downloads/arealm_small.csv -155.940114,19.081331,-155.618917,19.5307 ~/Downloads/arealm_small.csv ~/Downloads/zcta510_small.csv ~/Downloads/arealm_small.csv -88.331492,32.324142 10 ~/Downloads/arealm_small.csv ~/Downloads/arealm_small.csv 10
 ```
 
-### 5. Tholab setting
+
+### 5. Vocareum (submission site)
+
+In Vocareum, all groups share a single but powerful cluster.
+
+Vocareum is for submission only. After uploading your jar, directly click "submit".
+
+Do not test your code here. You have limited submission times. Every submission impacts your grade! 
+
+### Website
+
+https://www.vocareum.com/
+
+
+
+### 6. Thoth Lab (testing environment, optional)
+
+In Thoth Lab, two groups share an individual cluster that has 3 VMs. Feel free to use this cluster as your testing environment. Any operations on Thoth Lab cluster do not impact your grade.
+
 #### File structure
 On all machines in your cluster:
 
@@ -97,16 +119,6 @@ You need to set up password-less SSH and start HDFS/Spark by yourself. These mac
 **Thothlab Cluster Interface**: https://openstack.thothlab.com
 
 **Domain**:users
-
-### 6. Vocareum setting
-
-### Website
-
-https://www.vocareum.com/
-
-For submission only!
-
-Do not test your code here. You have limited submission times. Every submission impacts your grade! 
 
 ## Submission
 ### Deadline
