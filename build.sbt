@@ -1,5 +1,6 @@
 import sbt.Keys.{libraryDependencies, scalaVersion, version}
 
+
 lazy val root = (project in file(".")).
   settings(
     name := "CSE512-Project-Phase2-Template",
@@ -10,7 +11,9 @@ lazy val root = (project in file(".")).
 
     organization  := "org.datasyslab",
 
-    publishMavenStyle := true
+    publishMavenStyle := true,
+
+    mainClass := Some("cse512.SparkSQLExample")
   )
 
 libraryDependencies ++= Seq(
