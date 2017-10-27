@@ -82,7 +82,7 @@ If you are using the Scala template, note that:
 4. Two example datasets are put in "src/resources" folder. arealm10000 is a point dataset and zcta10000 is a rectangle dataset. You can can use them to test your code but eventually you must run your code on NYC taxi trip dataset. Our auto-grading system will also run your code on many different datasets.
 5. Here is an example that tells you how to submit your jar using "spark-submit"
 ```
-./bin/spark-submit ~/GitHub/CSE512-Project-Phase2-Template/target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar ~/Downloads/output.csv result/output rangequery src/resources/arealm10000.csv -93.63173,33.0183,-93.359203,33.219456 rangejoinquery src/resources/arealm10000.csv src/resources/zcta10000.csv distancequery src/resources/arealm10000.csv -88.331492,32.324142 1 distancejoinquery src/resources/arealm10000.csv src/resources/arealm10000.csv 0.1
+./bin/spark-submit ~/GitHub/CSE512-Project-Phase2-Template/target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar result/output rangequery src/resources/arealm10000.csv -93.63173,33.0183,-93.359203,33.219456 rangejoinquery src/resources/arealm10000.csv src/resources/zcta10000.csv distancequery src/resources/arealm10000.csv -88.331492,32.324142 1 distancejoinquery src/resources/arealm10000.csv src/resources/arealm10000.csv 0.1
 ```
 6. A test case file is given: ``exampleinput``. A correct answer is given: ``exampleanswer``
 
