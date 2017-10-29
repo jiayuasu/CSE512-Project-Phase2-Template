@@ -1,5 +1,11 @@
-# CSE512-Project-Phase2-Code-Template (v3.0, Oct 26)
+# CSE512-Project-Phase2-Code-Template
 
+#### Version history
+v3.1, Oct 28: fixed a typo in main function which should call "RangeJoinQuery" but actually called "RangeQuery"
+
+v3.0, Oct 26: supported dynamic input length
+
+v2.0, Oct 19: initial version that fits in Vocareum auto-grading system
 ## Requirement
 
 In Project Phase 2, you need to write two User Defined Functions ST\_Contains and ST\_Within in SparkSQL and use them to do four spatial queries:
