@@ -1,6 +1,8 @@
 # CSE512-Project-Phase2-Code-Template
 
 #### Version history
+v3.2, Nov 1: fixed a typo in "exampleanswer", the correct answer of the given "distancequery" should be 302 rather than 671.
+
 v3.1, Oct 28: fixed a typo in main function which should call "RangeJoinQuery" but actually called "RangeQuery"
 
 v3.0, Oct 26: supported dynamic input length
