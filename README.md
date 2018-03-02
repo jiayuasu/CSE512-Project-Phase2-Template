@@ -1,4 +1,3 @@
-
 # CSE512-Project-Phase2-Requirement
 
 ## Requirement
@@ -98,8 +97,34 @@ Do not test your code here. You have limited submission times. Every submission 
 
 https://www.vocareum.com/
 
-## Submission
 
+
+### 6. Thoth Lab (testing environment, optional)
+
+In Thoth Lab, two groups share an individual cluster that has 3 VMs. Feel free to use this cluster as your testing environment. Any operations on Thoth Lab cluster do not impact your grade.
+
+#### File structure
+On all machines in your cluster:
+
+```/CSE512/data/nyc-spark/pickup/``` has all point data stored in ```x,y``` CSV format.
+
+```/CSE512/code/hadoop-2.7.4``` has a fresh Hadoop 2.7.4
+```/CSE512/code/spark-2.2.0-bin-hadoop2.7``` has a fresh Spark 2.2.
+
+You need to set up password-less SSH and start HDFS/Spark by yourself. These machines have static IP.
+
+#### Website
+**User credential activate website (for activation only!)**: https://www.thothlab.org/
+
+**Thothlab Cluster Interface**: https://openstack.thothlab.com
+
+**Domain**:users
+
+## Submission
+### Deadline
+November 2nd, 2017 11:59 pm
+
+### Submission files
 1. Submit your code on Vocareum website in order to get your grade.
 2. Submit your project source code onto Blackboard in a compress zip file of "cse512-phase2-GROUPNAME" for plagiarism detection. Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
 3. If your code cannot compile and package, you will not receive any points.
