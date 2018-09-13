@@ -13,9 +13,10 @@ In Project Phase 2, you need to write two User Defined Functions ST\_Contains an
 
 A Scala SparkSQL code template is given. You must start from the template. 	A Scala SparkSQL code template is given. You must start from the template. The main code is in "SparkSQLExample.scala"
 
- ### The main function is in "SparkSQLExample.scala".	
- 
- ### The User Defined Functions that you need to implement are in "SpatialQuery.scala". Replace the query part with your code from the old template.
+### The main function is in "SparkSQLExample.scala".
+
+### The User Defined Functions that you need to implement are in "SpatialQuery.scala". Replace the query part with your code from the old template.
+
 
 
 The detailed requirements are as follows:
@@ -73,19 +74,19 @@ where ST_Within(p1._c0, p2._c0, 10)
 If you are using the Scala template, note that:
 
 1. You **only have to replace the logic** (currently is "true") in all User Defined Function.
-2. The main function in this template takes **dynamic length of parameters** as follows:	2. The main function in this template takes 21 parameters as follows:
-	* Output file path (**Mandatory**): ```/Users/ubuntu/Downloads/output```		* Output file path: ```/Users/ubuntu/Downloads/output.csv```
-	* Range query data file path, query window: ```rangequery /Users/ubuntu/Downloads/arealm.csv -155.940114,19.081331,-155.618917,19.5307```		* Range query data file path, query window: ```/Users/ubuntu/Downloads/arealm.csv -155.940114,19.081331,-155.618917,19.5307```
-	* Range join query data file path, range join query window data file path: ```rangejoinquery /Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/zcta510.csv```		* Range join query data file path, range join query window data file path: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/zcta510.csv```
-	* Distance query data file path, query point, distance: ```distancequery /Users/ubuntu/Downloads/arealm.csv -88.331492,32.324142 10```		* Distance query data file path, query point, distance: ```/Users/ubuntu/Downloads/arealm.csv -88.331492,32.324142 10```
-	* Distance join query data A file path, distance join query data B file path, distance: ```distancejoinquery /Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/arealm.csv 10```		* Distance join query data A file path, distance join query data B file path, distance: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/arealm.csv 10```
-3. The number of queries and the order of queries in the input **do not matter**. The code template will detect the corresponding query and call it!		* Range query data file path, query window: ```/Users/ubuntu/Downloads/arealm.csv -155.940114,19.081331,-155.618917,19.5307```
-4. Two example datasets are put in "src/resources" folder. arealm10000 is a point dataset and zcta10000 is a rectangle dataset. You can can use them to test your code but eventually you must run your code on NYC taxi trip dataset. Our auto-grading system will also run your code on many different datasets.		* Range join query data file path, range join query window data file path: ```/Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/zcta510.csv```
+2. The main function in this template takes **dynamic length of parameters** as follows:
+	* Output file path (**Mandatory**): ```/Users/ubuntu/Downloads/output```
+	* Range query data file path, query window: ```rangequery /Users/ubuntu/Downloads/arealm.csv -155.940114,19.081331,-155.618917,19.5307```
+	* Range join query data file path, range join query window data file path: ```rangejoinquery /Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/zcta510.csv```
+	* Distance query data file path, query point, distance: ```distancequery /Users/ubuntu/Downloads/arealm.csv -88.331492,32.324142 10```
+	* Distance join query data A file path, distance join query data B file path, distance: ```distancejoinquery /Users/ubuntu/Downloads/arealm.csv /Users/ubuntu/Downloads/arealm.csv 10```
+3. The number of queries and the order of queries in the input **do not matter**. The code template will detect the corresponding query and call it!
+4. Two example datasets are put in "src/resources" folder. arealm10000 is a point dataset and zcta10000 is a rectangle dataset. You can can use them to test your code but eventually you must run your code on NYC taxi trip dataset. Our auto-grading system will also run your code on many different datasets.
 5. Here is an example that tells you how to submit your jar using "spark-submit"
 ```
 ./bin/spark-submit ~/GitHub/CSE512-Project-Phase3-Template/target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar test/output.csv src/resources/arealm10000.csv -155.940114,19.081331,-155.618917,19.5307 src/resources/arealm10000.csv src/resources/zcta10000.csv src/resources/arealm10000.csv -88.331492,32.324142 10 src/resources/arealm10000.csv src/resources/arealm10000.csv 10 src/resources/arealm10000.csv -155.940114,19.081331,-155.618917,19.5307 src/resources/arealm10000.csv src/resources/zcta10000.csv src/resources/arealm10000.csv -88.331492,32.324142 10 src/resources/arealm10000.csv src/resources/arealm10000.csv 10
 ```
-
+6. A test case file is given: ``exampleinput``. A correct answer is given: ``exampleanswer``
 
 ### 5. Vocareum (submission site)
 
@@ -98,6 +99,8 @@ Do not test your code here. You have limited submission times. Every submission 
 ### Website
 
 https://www.vocareum.com/
+
+### Your Spark job log is in "aggregated.log" file of your Vocareum "LatestSubmission" folder
 
 ## Submission
 
@@ -122,3 +125,4 @@ If you are using the Scala template
 2. Run ```sbt assembly```. You may need to install sbt in order to run this command.
 3. Find the packaged jar in "./target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar"
 4. Submit the jar to Spark using Spark command "./bin/spark-submit"
+5. **You must revert Step 3 and 4 above and recompile your code before use spark-submit!!!**
