@@ -88,25 +88,9 @@ If you are using the Scala template, note that:
 ```
 6. A test case file is given: ``exampleinput``. A correct answer is given: ``exampleanswer``
 
-### 5. Vocareum (submission site)
-
-In Vocareum, all groups share a single but powerful cluster.
-
-Vocareum is for submission only. After uploading your jar, directly click "submit".
-
-Do not test your code here. You have limited submission times. Every submission impacts your grade! 
-
-### Website
-
-https://www.vocareum.com/
-
-### Your Spark job log is in "aggregated.log" file of your Vocareum "LatestSubmission" folder
-
 ## Submission
-
-1. Submit your code on Vocareum website in order to get your grade.
-2. Submit your project source code onto Blackboard in a compress zip file of "cse512-phase2-GROUPNAME" for plagiarism detection. Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
-3. If your code cannot compile and package, you will not receive any points.
+1. Submit your project source code onto Canvas in a compress zip file of "cse512-phase2-GROUPNAME". Note that: you need to make sure your code can compile and package by entering ```sbt assembly```. We will run the compiled package on our cluster directly using "spark-submit".
+2. If your code cannot compile and package, you will not receive any points.
 
 ## How to debug your code in IDE
 
@@ -125,4 +109,4 @@ If you are using the Scala template
 2. Run ```sbt assembly```. You may need to install sbt in order to run this command.
 3. Find the packaged jar in "./target/scala-2.11/CSE512-Project-Phase2-Template-assembly-0.1.0.jar"
 4. Submit the jar to Spark using Spark command "./bin/spark-submit"
-5. **You must revert Step 3 and 4 above and recompile your code before use spark-submit!!!**
+5. **You must revert Step 3 and 4 in "How to debug your code in IDE" and recompile your code before use spark-submit!!!**
